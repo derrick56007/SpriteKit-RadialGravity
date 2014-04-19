@@ -50,12 +50,16 @@ How to use it
 
 ========================
 
-[planet setGravityRange: (float)]; //how far the gravity will reach
+[planet setGravityRange: (float)]; 
+- how far the gravity will reach
 
-[planet setGravityMultiplier: (float)]; //how powerful the gravity is (is already really strong, so start with 0.2f)
+[planet setGravityMultiplier: (float)]; 
+- how powerful the gravity is (is already really strong, so start with 0.2f)
 
-[objectToAffect.physicsbody setAffectedByGravity: (true || false) ]; //planets will only affect if affectedByGravity
+[objectToAffect.physicsbody setAffectedByGravity: (true || false) ]; 
+- planets will only affect if affectedByGravity
 
-[planet doGravityUpdate: (array of children)]; // Does the magic to calculate the radial force
+[planet doGravityUpdate: (array of children)];
+- Does the magic to calculate the radial force
 
 
