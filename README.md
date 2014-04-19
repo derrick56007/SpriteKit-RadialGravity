@@ -23,36 +23,37 @@ How to use it
 
 5. Add the planet gravity update to the update method.
 
-    -(id)initWithSize:(CGSize)size {    
-        if (self = [super initWithSize:size])
-        {
-            [YMCPhysicsDebugger init];
-            
-            [self setPhysicsBody: [SKPhysicsBody bodyWithEdgeLoopFromRect: self.frame]];
-            [self.physicsWorld setGravity: CGVectorMake( 0, 0)];
-            
-            planet = [Planet spriteNodeWithImageNamed:@"planet.png"];
-            [planet setSize: CGSizeMake(100, 100)];
-            [planet setPosition: CGPointMake( self.size.width/2, self.size.height/2)];
-            [planet setPhysicsBody: [SKPhysicsBody bodyWithCircleOfRadius: 50]];
-            [planet.physicsBody setDynamic: false];
-            [planet.physicsBody setCategoryBitMask: planetCategory];
-            [planet.physicsBody setCollisionBitMask: asteroidCategory];
-            [planet setGravityRange: 120];
-            [planet setGravityMultiplier: 0.1f];
-            [self addChild: planet];
-            
-            SKSpriteNode *planetRange = [SKSpriteNode spriteNodeWithColor:[UIColor clearColor] size:CGSizeMake(10, 10)];
-            [planetRange setPosition: CGPointMake( self.size.width/2, self.size.height/2)];
-            [planetRange setPhysicsBody: [SKPhysicsBody bodyWithCircleOfRadius: [planet getGravityRange]]];
-            [planetRange.physicsBody setDynamic: false];
-            [planetRange.physicsBody setCategoryBitMask: voidCategory];
-            [self addChild: planetRange];
-            
-            [self drawPhysicsBodies];
+        -(id)initWithSize:(CGSize)size {    
+            if (self = [super initWithSize:size])
+            {
+                [self setPhysicsBody: [SKPhysicsBody bodyWithEdgeLoopFromRect: self.frame]];
+                [self.physicsWorld setGravity: CGVectorMake( 0, 0)];
+                
+                planet = [Planet spriteNodeWithImageNamed:@"planet.png"];
+                [planet setSize: CGSizeMake(100, 100)];
+                [planet setPosition: CGPointMake( self.size.width/2, self.size.height/2)];
+                [planet setPhysicsBody: [SKPhysicsBody bodyWithCircleOfRadius: 50]];
+                [planet.physicsBody setDynamic: false];
+                [planet setGravityRange: 120];
+                [planet setGravityMultiplier: 0.1f];
+                [self addChild: planet];
+            }
+            return self;
         }
-        return self;
-    }
 
+        -(void)update:(CFTimeInterval)currentTime
+        {
+            [planet doGravityUpdate: self.children];
+        }
+
+========================
+
+[planet setGravityRange: (float)]; //how far the gravity will reach
+
+[planet setGravityMultiplier: (float)]; //how powerful the gravity is (is already really strong, so start with 0.2f)
+
+[objectToAffect.physicsbody setAffectedByGravity: (true || false) ]; //planets will only affect if affectedByGravity
+
+[planet doGravityUpdate: (array of children)]; // Does the magic to calculate the radial force
 
 
