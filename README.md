@@ -17,11 +17,11 @@ How to use it
 
 3. Set a spritenode with a the circular PhysicsBody as you normally would.
 
-3. Set the gravity range of the planet.
+3. Set the gravity range of the planet. [planet setGravityRange: (float)];
 
-4. Set the gravity strength (start with 0.2f).
+4. Set the gravity strength. [planet setGravityMultiplier: (float)]; //(start with 0.2f)
 
-5. Add the planet gravity update to the update method.
+5. Add the planet gravity update to the update method. [planet doGravityUpdate];
 
 =======================
 
