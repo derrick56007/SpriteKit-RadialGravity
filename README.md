@@ -23,6 +23,8 @@ How to use it
 
 5. Add the planet gravity update to the update method.
 
+=======================
+
         -(id)initWithSize:(CGSize)size {    
             if (self = [super initWithSize:size])
             {
