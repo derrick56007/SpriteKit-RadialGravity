@@ -62,4 +62,5 @@ How to use it
 [planet doGravityUpdate: (array of children)];
 - Does the magic to calculate the radial force
 
-
+example:
+https://dl.dropboxusercontent.com/u/102932241/RadialGravity.zip
